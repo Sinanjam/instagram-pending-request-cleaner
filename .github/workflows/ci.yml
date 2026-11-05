@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  nix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Privacy scan
+        run: nix develop --command python scripts/privacy_scan.py
+      - name: Secret scan
+        run: nix develop --command gitleaks detect --no-git --source . --redact
+      - name: Flake checks
+        run: nix flake check --print-build-logs
+      - name: Build package
+        run: nix build --print-build-logs
+      - name: CLI help
+        run: nix run . -- --help

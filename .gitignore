@@ -1,0 +1,36 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+result
+result-*
+.direnv/
+.env
+.env.*
+
+# Instagram exports and user-generated data
+*.zip
+pending_follow_requests.json
+progress.json
+deferred.json
+deferred-review.json
+deferred-apply-allowlist.json
+actions.jsonl
+*-actions.jsonl
+*.log
+*.png
+*.jpg
+*.jpeg
+backups/
+firefox-profile/
+cookies.sqlite*
+sessionstore.jsonlz4
+logins.json
+key4.db
+cert9.db
+
+# Generated reports may contain usernames
+*-report.csv
+*-report.md
+last-*.json

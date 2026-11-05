@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "instagram-pending-request-cleaner"
+version = "0.1.0"
+description = "Fail-closed Selenium tool for reviewing and withdrawing sent Instagram follow requests"
+requires-python = ">=3.11"
+dependencies = ["selenium>=4.20"]
+readme = "README.md"
+license = "MIT"
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Topic :: Security",
+]
+
+[project.scripts]
+instagram-request-cleaner = "instagram_request_cleaner.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
